@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="0">
+        <record id="cours01" model="openacademy.course">
+            <field name="name">math</field>
+        </record>
+           <record id="cours9872" model="openacademy.course">
+            <field name="name">francais</field>
+        </record>
+        <record id="cours987983" model="openacademy.course">
+            <field name="name">arabe</field>
+        </record>
+ <record id="cours111" model="openacademy.course">
+            <field name="name">science</field>
+        </record>
+
+
+         <record id="session01" model="openacademy.session">
+            <field name="name">session01</field>
+        </record>
+           <record id="session02" model="openacademy.session">
+            <field name="name">session02</field>
+        </record>
+        <record id="session03" model="openacademy.session">
+            <field name="name">session03</field>
+        </record>
+ <record id="session04" model="openacademy.session">
+            <field name="name">session04</field>
+        </record>
+    </data>
+</odoo>

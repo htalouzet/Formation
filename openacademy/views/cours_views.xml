@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_cours_form">
+            <field name="name">view.cours.form</field>
+            <field name="model">openacademy.course</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Cours">
+                    <header>
+                        <button name="change_etat" type="object" string="changement statut"></button>
+                        <field name="cours_state" widget="statusbar"/>
+                    </header>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="responsable_id"/>
+
+
+
+                    </group>
+                    <notebook>
+                        <page string="active">
+                            <group>
+                                <field name="active"/>
+                                <field name="date_debut"/>
+                            </group>
+                        </page>
+                        <page string="Session">
+
+                            <field name="session_ids">
+                                <tree editable="botton">
+                                  <field name="name"/>
+                                  <field name="seats"/>
+
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_cours_tree">
+            <field name="name">view.cours.tree</field>
+            <field name="model">openacademy.course</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Cours" decoration-info="cours_state=='start'" decoration-danger="cours_state=='end'">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="cours_state"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_cours">
+            <field name="name">cours</field>
+            <field name="res_model">openacademy.course</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--field name="view_id" ref="view_cours_tree"/-->
+        </record>
+
+        <menuitem id="openacademy" name="openacademy"/>
+        <menuitem parent="openacademy" id="menu_cours" action="action_cours" name="Cours"/>
+
+        <record model="ir.ui.view" id="view_cours_search">
+            <field name="name">cours</field>
+            <field name="model">openacademy.course</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="cours">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <filter name="mes_cours" string="mes cours" domain="[('responsable_id','=', uid)]"></filter>
+
+                </search>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+       <report
+           id="session"
+           model="openacademy.session"
+           string="Impression session"
+           report_type="qweb-pdf"
+           name="openacademy.report_session"
+           file="openacademy.report_session"
+           />
+        <template id="report_session">
+           <t t-call="web.html_container">
+               <t t-foreach="docs" t-as="o">
+               <t t-call="web.external_layout">
+                   <div class="page">
+                       <div><span t-field="o.name"/></div>
+                       <div><span t-field="o.date_start"/></div>
+                      <div> <span t-field="o.nbr_participant"/></div>
+
+                       <table class="table table-condensed">
+                           <thead style="color:red;">
+                               <tr>
+                                   <th>Nom</th>
+                                   <th>Téléphone</th>
+                               </tr>
+                           </thead>
+                           <tbady>
+                               <t t-foreach="o.participant_ids" t-as="participant">
+                                   <tr>
+                                   <td><span t-field="participant.name"/></td>
+                                   <td><span t-field="participant.phone"/></td></tr>
+                               </t>
+                           </tbady>
+                       </table>
+
+
+                   </div>
+               </t>
+
+               </t>
+           </t>
+
+        </template>
+
+
+        <report
+           id="cours"
+           model="openacademy.course"
+           string="Impression cours"
+           report_type="qweb-pdf"
+           name="openacademy.report_cours"
+           file="openacademy.report_cours"
+           />
+        <template id="report_cours">
+           <t t-call="web.html_container">
+               <t t-foreach="docs" t-as="o">
+               <t t-call="web.external_layout">
+                   <div class="page">
+                       <div><span t-field="o.name"/></div>
+                       <div><span t-field="o.responsable_id"/></div>
+
+
+                       <table class="table table-condensed">
+                           <thead style="color:red;">
+                               <tr>
+                                   <th>Session</th>
+                                   <th>date début</th>
+                                   <th>maitre</th>
+                               </tr>
+                           </thead>
+                           <tbady>
+                               <t t-foreach="o.session_ids" t-as="session">
+                                   <tr>
+                                   <td><span t-field="session.name"/></td>
+                                   <td><span t-field="session.date_start"/></td>
+                                   <td><span t-field="session.maitre_id"/></td></tr>
+                               </t>
+                           </tbady>
+                       </table>
+
+
+                   </div>
+               </t>
+
+               </t>
+           </t>
+
+        </template>
+
+
+
+
+         <report
+           id="courverif"
+           model="openacademy.course"
+           string="Impression cours_verif"
+           report_type="qweb-pdf"
+           name="openacademy.report_coursverif"
+           file="openacademy.report_coursverif"
+           />
+        <template id="report_coursverif">
+           <t t-call="web.html_container">
+               <t t-foreach="docs" t-as="o">
+               <t t-call="web.external_layout">
+                   <div class="page">
+                       <div><span t-field="o.name"/></div>
+                       <div><span t-field="o.responsable_id"/></div>
+
+
+                       <table class="table table-condensed">
+                           <thead style="color:red;">
+                               <tr>
+                                   <th>Session</th>
+                                   <th>date début</th>
+                               </tr>
+                           </thead>
+                           <tbady>
+                               <t t-foreach="o.session_ids" t-as="session">
+                                   <tr>
+                                   <td><span t-field="session.name"/></td>
+                                   <td><span t-field="session.date_start"/></td>
+                                   </tr>
+                               </t>
+                           </tbady>
+                       </table>
+
+
+                   </div>
+               </t>
+
+               </t>
+           </t>
+
+        </template>
+
+
+
+
+    </data>
+</odoo>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+    <record id="group_manager" model="res.groups">
+        <field name="name">OpenAcademy / Manager</field>
+    </record>
+
+        <record id="delete_res" model="ir.rule">
+            <field name="name">Supprimer un responsable</field>
+            <field name="model_id" ref="openacademy.model_openacademy_course"/>
+            <field name="groups" eval="[(4,ref('openacademy.group_manager'))]"/>
+            <field name="perm_read" eval="0"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="1"/>
+            <field name="domain_force">[('responsable_id','=',user.id),('responsable_id','=',False)]</field>
+        </record>
+
+         <record id="delete_session" model="ir.rule">
+            <field name="name">Supprimer session</field>
+            <field name="model_id" ref="openacademy.model_openacademy_session"/>
+             <field name="groups" eval="[(4,ref('openacademy.group_manager'))]"/>
+             <field name="global" eval="1"/>
+            <field name="perm_read" eval="0"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="1"/>
+            <field name="domain_force">[('state','!=','confirme')]</field>
+        </record>
+    </data>
+</odoo>

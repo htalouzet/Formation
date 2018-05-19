@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_test_form">
+            <field name="name">view.test.form</field>
+            <field name="model">openacademy.test</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Test">
+                    <group>
+                        <field name="name"/>
+                        <field name="designation"/>
+                        <field name="maitre_id"/>
+                        <field name="cours_id"/>
+                        <field name="participant_ids" domain="[('student', '=' , True)]"></field>
+                    </group>
+
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_test_tree">
+            <field name="name">view.test.tree</field>
+            <field name="model">openacademy.test</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Session">
+                        <field name="name"/>
+                        <field name="designation"/>
+                        <field name="maitre_id"/>
+                        <field name="cours_id"/>
+                        <field name="participant_ids" domain="[('student', '=' , True)]"></field>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_test">
+            <field name="name">test</field>
+            <field name="res_model">openacademy.test</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--field name="view_id" ref="view_cours_tree"/-->
+        </record>
+
+        <menuitem id="openacademy" name="openacademy"/>
+        <menuitem parent="openacademy" id="menu_test" action="action_test" name="Test"/>
+
+        <record model="ir.ui.view" id="view_test_search">
+            <field name="name">test</field>
+            <field name="model">openacademy.test</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="test">
+                    <field name="name"/>
+                    <field name="designation"/>
+                </search>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
